@@ -174,6 +174,8 @@ public class NF {
         visited[s] = true;
         parent[s] = -1;
 
+        
+
         // Standard BFS Loop
         while (queue.size() != 0) {
             int u = queue.poll();
