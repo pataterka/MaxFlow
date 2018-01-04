@@ -23,12 +23,9 @@ public class NF {
 
     public void NetworkFlow(ReaderWriter reader) {
 
-//        Graph graph = reader.getGraph();
         int source = reader.getSource();
         int sink = reader.getSink();
-//        Map<String, Integer> edges = reader.getEdges();
         Map<String, Integer> edgesCopy = reader.getEdges();
-//        Map<String, Integer> minCut = new HashMap<>();
         Map<String, Integer> vertices = reader.getVertices();
 
         int graph[][] = reader.getGraphMatrix();
@@ -39,10 +36,7 @@ public class NF {
             }
         }
 
-//        Graph residualGraph = reader.getGraph();
-//        BreadthFirstPaths bfs = new BreadthFirstPaths(residualGraph, source);
         int path[] = new int[V];
-        //boolean visited[] = new boolean[V];
 
         while (bfs(residualGraph, source, sink, path)) {
             int minCapacity = Integer.MAX_VALUE;
@@ -65,87 +59,10 @@ public class NF {
 
 
 
-//        List<String> e = new ArrayList<>();
-//
-//        while (bfs.hasPathTo(sink)) {
-//            int minCapacity = Integer.MAX_VALUE;
-//            String path[];
-//            e.clear();
-//
-//            path = bfs.pathTo(sink).toString().split(" ");
-//
-//            String u = path[0];
-//            for (int i = 1; i < path.length; i++) {
-//                String v = path[i];
-//                e.add(String.join(" ", u, v));
-//                u = v;
-//            }
-////            String minC = null;
-//
-//            for (int i = 0; i < e.size(); i++) {
-//                int capacity = edgesCopy.get(e.get(i));
-//                if (capacity < minCapacity) {
-//                    minCapacity = capacity;
-////                    minC = e.get(i);
-//                }
-//            }
-////            minCut.put(minC, edgesCopy.get(minC));
-//
-//            residualGraph = new Graph(reader.getN());
-//
-//            for (int i = 0; i < e.size(); i++) {
-//                String bla[] = e.get(i).split(" ");
-//                String reverse = String.join(" ", bla[1], bla[0]);
-//
-//                //int newCapacity = edgesCopy.get(e.get(i)) - minCapacity;
-//                edgesCopy.replace(e.get(i), edgesCopy.get(e.get(i)) - minCapacity);
-//                edgesCopy.replace(reverse, edgesCopy.get(e.get(i)) + minCapacity);
-//
-//            }
-//            for (String key : edgesCopy.keySet()) {
-//                String e2[];
-//                e2 = key.split(" ");
-//                if (edgesCopy.get(key) != 0) {
-//                    residualGraph.addEdge(Integer.parseInt(e2[0]), Integer.parseInt(e2[1]));
-//                }
-//            }
-//            bfs = new BreadthFirstPaths(residualGraph, source);
-
-//            OverallFlow = OverallFlow + minCapacity;
-//
-//
-//            System.out.println(bfs.pathTo(sink) + "minimum capacity= " + minCapacity);
 
 
         System.out.println("Overall flow= " + OverallFlow);
 
-//        Set<Integer> reachable = new HashSet<>();
-//
-//        for (String v : vertices.keySet()) {
-//            if (bfs.hasPathTo(vertices.get(v))){
-//                reachable.add(vertices.get(v));
-//            }
-//        }
-//
-//        bfs = new BreadthFirstPaths(residualGraph, sink);
-//
-//        for (String v : vertices.keySet()){
-//            if (!bfs.hasPathTo(vertices.get(v))){
-//                reachable.add(vertices.get(v));
-//
-//            }
-//        }
-//        System.out.println(reachable);
-
-
-//        int x = 0;
-//
-//        for (String s : minCut.keySet()) {
-//            x = x + minCut.get(s);
-//            System.out.println(s + " " + minCut.get(s));
-//
-//        }
-//        System.out.println(x);
 
         boolean visited[V];
 
@@ -174,7 +91,7 @@ public class NF {
         visited[s] = true;
         parent[s] = -1;
 
-        
+
 
         // Standard BFS Loop
         while (queue.size() != 0) {
